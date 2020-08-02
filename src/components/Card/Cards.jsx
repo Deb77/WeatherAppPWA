@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import styles from './Cards.module.css';
 import {fetchedData} from '../../api/fetchWeather';
 const Cards = () => {
     const [place,setPlace] = useState("");
@@ -9,11 +10,15 @@ const Cards = () => {
         setPlace("");
     }
     return (
-        <div>
-            <input type="text" value={place} onChange={(e) => setPlace(e.target.value)}/>
-            <button onClick={onClick}>Search</button>
+        <div className={styles.container}>
+            <div className={styles.front}>
+                <p>Enter a place</p>
+                <input type="text" value={place} onChange={(e) => setPlace(e.target.value)}/>
+                <button onClick={onClick}>Search</button>
+            </div>
+            
             {weather.main &&(
-                <div>
+                <div className={styles.back}>
                     <h1>{weather.name}</h1>
                     <h2>{weather.sys.country}</h2>
                     <div>
