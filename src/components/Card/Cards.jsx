@@ -13,7 +13,11 @@ const Cards = () => {
         <div className={styles.container}>
             <div className={styles.top}>
                 <p>Enter a place</p>
-                <input type="text" value={place} onChange={(e) => setPlace(e.target.value)}/>
+                <input type="text" value={place} onChange={(e) => setPlace(e.target.value)} onKeyPress={(e) => {
+                    if(e.key === "Enter"){
+                        onClick()
+                    }
+                }}/>
                 <button onClick={onClick}>Search</button>            
             {weather.main &&(
                 <div className={styles.bottom}>

@@ -36,6 +36,9 @@ button{
     box-shadow: 1px 1px 1px gray;
 }
 
+button:focus{
+    outline:none;
+}
 p{
     text-align: center;
     font-size: 1.3em;
