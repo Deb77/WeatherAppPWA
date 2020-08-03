@@ -3,7 +3,7 @@ import styles from './Cards.module.css';
 import {fetchedData} from '../../api/fetchWeather';
 const Cards = () => {
     const [place,setPlace] = useState("");
-    const [weather,setWeather] = useState({})
+    const [weather,setWeather] = useState({});
     const onClick = async () => {
         const data = await fetchedData(place);
         setWeather(data);
@@ -11,14 +11,12 @@ const Cards = () => {
     }
     return (
         <div className={styles.container}>
-            <div className={styles.front}>
+            <div className={styles.top}>
                 <p>Enter a place</p>
                 <input type="text" value={place} onChange={(e) => setPlace(e.target.value)}/>
-                <button onClick={onClick}>Search</button>
-            </div>
-            
+                <button onClick={onClick}>Search</button>            
             {weather.main &&(
-                <div className={styles.back}>
+                <div className={styles.bottom}>
                     <h1>{weather.name}</h1>
                     <h2>{weather.sys.country}</h2>
                     <div>
@@ -30,7 +28,9 @@ const Cards = () => {
                         <p>{weather.weather[0].description}</p>
                     </div>
                 </div>
+                
             )}
+            </div>
         </div>
     )
 }
